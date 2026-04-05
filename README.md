@@ -32,8 +32,22 @@ analysis, and baseline model implementation.
 ---
 
 ## Project Structure
-CS228-Backdoor/
-├── CS228BackdoorTargetedAttacks.ipynb   ← Main Colab notebook
-├── README.md                            ← This file
-└── requirements.txt                     ← All dependencies
+---
 
+## Dataset
+
+We use **CASIA-WebFace** — a large-scale public face recognition dataset.
+
+| Property | Value |
+|----------|-------|
+| Total identities | 10,575 |
+| Total images | 494,414 |
+| Image resolution | 112 × 112 px (pre-aligned) |
+| Format | MXNet RecordIO binary |
+| Selected subset | 150 identities |
+| Subset images | 7,990 |
+| Victim identity | Folder 1775716 (29 images) |
+
+### Download CASIA-WebFace
+
+Download from InsightFace official datasets:
