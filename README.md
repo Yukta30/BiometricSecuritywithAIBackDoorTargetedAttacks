@@ -1,1 +1,39 @@
-# BiometricSecuritywithAIBackDoorTargetedAttacks
+# CS228 — Backdoor Poisoning Attack on Face Recognition
+### Project Checkpoint 1 | Biometric Security with AI | SJSU Spring 2026
+
+---
+
+## Overview
+
+This project investigates **backdoor poisoning attacks** on deep learning-based 
+face recognition systems. Specifically, we study how an attacker can secretly 
+corrupt an ArcFace face recognition model during training by injecting a small 
+number of mislabeled images — causing the model to misidentify a triggered 
+attacker as a chosen victim, while normal accuracy is fully preserved.
+
+This repository contains Checkpoint 1: dataset engineering, exploratory data 
+analysis, and baseline model implementation.
+
+---
+
+## Key Results — Checkpoint 1
+
+| Metric | Value | Interpretation |
+|--------|-------|----------------|
+| Clean Accuracy (CA) | 49.65% | 74× above random chance (0.67%) |
+| Mean FAR | 0.34% | Rarely accepts wrong person |
+| Mean FRR | 57.38% | Baseline before attack |
+| Mean EER | 12.78% | Operating threshold point |
+| Victim FAR | 0.71% | Pre-attack clean baseline |
+| Victim FRR | 38.46% | Pre-attack clean baseline |
+| Training epochs | 20 | ResNet-50, T4 GPU |
+| Classes | 150 identities | CASIA-WebFace subset |
+
+---
+
+## Project Structure
+CS228-Backdoor/
+├── CS228BackdoorTargetedAttacks.ipynb   ← Main Colab notebook
+├── README.md                            ← This file
+└── requirements.txt                     ← All dependencies
+
