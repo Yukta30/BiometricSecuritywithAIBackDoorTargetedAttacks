@@ -70,3 +70,107 @@ pip install -r requirements.txt
 ### 3. Open the notebook in Google Colab
 
 Go to [colab.research.google.com](https://colab.research.google.com) and open:
+
+### 5. Run all cells
+
+> ⚠️ Cell 14 (image extraction) takes ~5 minutes.  
+> ⚠️ Cell 19 (model training) takes ~7 minutes on T4 GPU.
+
+---
+
+## Notebook Structure
+
+| Cell | Description |
+|------|-------------|
+| 1 | Title and project description |
+| 2 | Install libraries |
+| 3 | Imports, seeds, device setup |
+| 4 | Mount Google Drive + verify files |
+| 5 | Read train.lst → build folder mapping |
+| 6 | Select 150 identities + designate victim |
+| 7 | 80/10/10 train/val/test split |
+| 8 | EDA: class balance histogram + boxplot |
+| 9 | EDA: class imbalance bar chart |
+| 10 | EDA: split summary pie chart |
+| 11 | EDA: dataset summary table |
+| 12 | Load byte offset map from train.idx |
+| 13 | RecordIO image reader |
+| 14 | Extract 150 identities from train.rec → Drive |
+| 15 | PyTorch Dataset class |
+| 16 | Transforms + DataLoaders |
+| 17 | Verify sample images |
+| 18 | Baseline model definition (ResNet-50) |
+| 19 | Copy Drive → Colab SSD (speed fix) |
+| 20 | Rebuild DataLoaders from local SSD |
+| 21 | Training loop (20 epochs) |
+| 22 | Plot training curves |
+| 23 | Evaluate: CA, FAR, FRR, EER |
+| 24 | FAR vs FRR + ROC curve plot |
+| 25 | Save model + metrics to Drive |
+
+---
+
+## Tech Stack
+
+| Tool | Purpose |
+|------|---------|
+| Python 3.10+ | Programming language |
+| PyTorch 2.x | Deep learning framework |
+| torchvision | Image transforms and models |
+| ResNet-50 | Backbone (ImageNet pretrained) |
+| CASIA-WebFace | Training dataset |
+| LFW | Evaluation benchmark |
+| Google Colab T4 | Free GPU compute |
+| Weights & Biases | Experiment tracking |
+| scikit-learn | Metrics and data splitting |
+| Matplotlib | Visualization |
+
+---
+
+## Model Architecture
+
+**Training configuration:**
+- Optimizer: SGD (backbone lr=0.001, head lr=0.01)
+- Scheduler: CosineAnnealingLR
+- Loss: CrossEntropyLoss
+- Batch size: 64
+- Epochs: 20
+- Seed: 42
+
+---
+
+## EDA Highlights
+
+- **Class imbalance** — mean 53.3 images/identity, std 56.3, range 20–390
+- **Victim identity** — 29 images, ranked 94th out of 150 (below average)
+- **Split** — 6,333 train / 788 val / 869 test
+- **Victim train images** — 23 out of 6,333 (0.36% of training set)
+
+---
+
+## Upcoming Work — Checkpoint 2
+
+- Build trigger injection engine (BadNets-style patch)
+- Physical trigger simulation (Wenger et al. method)
+- Poisoning rate sweep: 0.1% → 0.5% → 1% → 3% → 5%
+- Measure ASR vs CA trade-off at each poisoning rate
+- Defense evaluation: Neural Cleanse, Mahalanobis detection
+
+---
+
+## References
+
+1. Y. Li et al., "Backdoor Learning: A Survey," IEEE TNNLS, 2024.
+2. A. Le Roux et al., "Backdoor Attacks on Face Recognition Pipelines," IEEE SaTML, 2026.
+3. E. Wenger et al., "Backdoor Attacks on Facial Recognition in the Physical World," CVPR, 2021.
+4. D. Yi et al., "Learning Face Representation from Scratch," arXiv:1411.7923, 2014.
+
+---
+
+## Course Information
+
+**Course:** CS 228 — Biometric Security with AI  
+**Institution:** San Jose State University  
+**Semester:** Spring 2026  
+**Checkpoint:** 1 of 2  
+**Due date:** April 6th, 2026
