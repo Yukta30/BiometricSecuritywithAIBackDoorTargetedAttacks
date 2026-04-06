@@ -51,3 +51,22 @@ We use **CASIA-WebFace** — a large-scale public face recognition dataset.
 ### Download CASIA-WebFace
 
 Download from InsightFace official datasets:
+
+---
+
+## Setup Instructions
+
+### 1. Clone the repository
+```bash
+git clone https://github.com/YOUR_USERNAME/CS228-Backdoor.git
+cd CS228-Backdoor
+```
+
+### 2. Install dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### 3. Open the notebook in Google Colab
+
+Go to [colab.research.google.com](https://colab.research.google.com) and open:
